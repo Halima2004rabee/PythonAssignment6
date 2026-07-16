@@ -13,6 +13,10 @@ score = int(input("Enter student score: "))
 
 students.append({"name": name, "score": score})
 
+file = open("students.txt", "a")
+file.write(f"{name},{score}\n")
+file.close()
+
 students.sort(key=lambda x: x["name"])
 
 for student in students:
