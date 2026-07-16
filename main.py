@@ -3,8 +3,11 @@ students = []
 file = open("students.txt", "r")
 
 for line in file:
-    name, score = line.strip().split(",")
-    students.append({"name": name, "score": int(score)})
+    if line.strip():
+        data = line.strip().split(",")
+        name = ",".join(data[:-1])   
+        score = data[-1]             
+        students.append({"name": name, "score": int(score)})
 
 file.close()
 
@@ -14,7 +17,7 @@ score = int(input("Enter student score: "))
 students.append({"name": name, "score": score})
 
 file = open("students.txt", "a")
-file.write(f"{name},{score}\n")
+file.write(f"\n{name},{score}")
 file.close()
 
 students.sort(key=lambda x: x["name"])
